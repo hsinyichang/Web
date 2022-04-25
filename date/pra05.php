@@ -10,7 +10,7 @@ $todaytime=strtotime(date("Y-m-d"));
 
 $n=10;
 for($i=1;$i<=$n;$i++){
-    $nextweek=strtotime("+$i week",$todaytime);
-    echo date("Y-m-d l",$nextweek)."<br>";
+    $nextweek=strtotime("+$i week",$todaytime);//先轉換成秒
+    echo date("Y-m-d l",$nextweek)."<br>";//在呼叫出年月日
 }
 ?>
