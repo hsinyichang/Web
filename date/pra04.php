@@ -22,7 +22,7 @@
     
     <?php 
     $workday="";
-    $w=date("w");
+    $w=date("w");//星期中的第幾天，0是星期日，6是星期六
     if($w==0||$w==6){
         $workday="假日";
     }else{
