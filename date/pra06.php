@@ -5,14 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>線上月曆</title>
+
+    <style>
+        table,tr,td{
+            border-collapse: collapse;/*讓框線合併*/
+            border: 1px solid lightgray;
+            text-align: center;
+            padding: 5px;
+        }
+    </style>
+
+
+
 </head>
 <body>
     <?php
     $month=4;
-    
-    
-    
-    
     ?>
+    <table>
+    <tr>
+        <td>日</td>
+        <td>一</td>
+        <td>二</td>
+        <td>三</td>
+        <td>四</td>
+        <td>五</td>
+        <td>六</td>
+    </tr>
+        <?php
+        for($i=0;$i<6;$i++){
+            echo '<tr>';
+            for($j=0;$j<7;$j++){
+                echo "<td>";                
+                echo $j;
+                echo "</td>";
+            }echo '</tr>';
+        }
+        ?>
+    </table>
 </body>
 </html>
