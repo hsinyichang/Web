@@ -13,9 +13,8 @@
             text-align: center;
             padding: 5px;
         }
+        
     </style>
-
-
 
 </head>
 <body>
@@ -23,6 +22,7 @@
     $month=4;
     ?>
     <table>
+        
     <tr>
         <td>日</td>
         <td>一</td>
@@ -33,13 +33,14 @@
         <td>六</td>
     </tr>
         <?php
-        for($i=0;$i<6;$i++){
-            echo '<tr>';
-            for($j=0;$j<7;$j++){
+        for($i=0;$i<6;$i++){//row
+            echo '<tr>';//因要用迴圈跑出表格所以在php裡面要用echo的方式呼叫
+            for($j=0;$j<7;$j++){//column
                 echo "<td>";                
-                echo $j;
+                echo $i*7+($j+1);//禮拜六直行的公式為7*i+7(j=6)，禮拜日直行的公式為7*i+1(j=0)，以此類推，因j=0，所以要再+1。
                 echo "</td>";
-            }echo '</tr>';
+            }
+                echo '</tr>';
         }
         ?>
     </table>
