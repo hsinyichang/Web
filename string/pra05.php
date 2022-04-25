@@ -28,7 +28,7 @@
         $pos=mb_strpos($str,$search);//從$str字串中找到文字$search第一次出現的位置，為array[7]的位置
         $head=mb_substr($str,0,$pos);//取出$str字串從array[0]位置取到($pos)7個。
         //$tail_len=mb_strlen($str)-mb_strlen(mb_substr($str,0,$pos))-mb_strlen($search);
-        $tail=mb_substr($str,$pos+mb_strlen($search));//
+        $tail=mb_substr($str,$pos+mb_strlen($search));//取$str字串從(頭+尋找的字)往後的字串。這裡只要輸入要從哪裡開始找就好，因為要直接找後段的字串，所以不用設定要找多少的字串
         $str=$head      //取出前7個字
              . "<span style='font-size:2rem;color:red'>"
              . $search  //要找的字
