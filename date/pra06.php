@@ -13,6 +13,8 @@
             text-align: center;
             padding: 5px;
         }
+        .weekend{
+            background:pink;
         
     </style>
 
