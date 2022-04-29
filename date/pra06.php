@@ -19,8 +19,9 @@
 </head>
 <body>
     <?php
-    $month=6;
+    $month=5;
     ?>
+    <!-- 1.先跑出表格(使用迴圈) 2.標題日~六 3.定義年月日 4.當月第一天星期幾，當月天數，最後一天 -->
     <table>
         
     <tr>
@@ -55,6 +56,17 @@ $firstWeekday=date("w",strtotime($firstDay));
 $monthDays=date("t",strtotime($firstDay));
 $lastDay=date("Y-").$month."-".$monthDays;
 $today=date("Y-m-d");
+
+
+$dateHouse=[];
+for($i=0;$i<$monthDays;$i++){
+    $date=date("Y-m-d",strtotime("+1$i days",strtotime($firstDay)));
+    $dateHouse[]=$date;
+}
+
+
+
+
 echo "月份".$month;
 echo "<br>";
 echo "第一天是".$firstDay;
