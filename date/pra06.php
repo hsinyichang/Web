@@ -45,33 +45,33 @@
 <body>
     <h1>使用陣列來做月曆</h1>
 <?php
-$month=2;
+$month=5;
 
 
-$firstDay=date("Y-").$month."-1";
-$firstWeekday=date("w",strtotime($firstDay));
-$monthDays=date("t",strtotime($firstDay));
-$lastDay=date("Y-").$month."-".$monthDays;
-$today=date("Y-m-d");
-$lastWeekday=date("w",strtotime($lastDay));
+$firstDay=date("Y-").$month."-1";/*這個月的第一天，ex:2022-2-1*/
+$firstWeekday=date("w",strtotime($firstDay));/*第一天是星期幾，0表示星期天-6表示星期六 */
+$monthDays=date("t",strtotime($firstDay));/*指定的月份有幾天 */
+$lastDay=date("Y-").$month."-".$monthDays;/*這個月的最後一天，ex:2022-2-28(月份的天數) */
+$today=date("Y-m-d");/*今天日期 */
+$lastWeekday=date("w",strtotime($lastDay));/*最後一天是星期幾 */
 $dateHouse=[];
 
-for($i=0;$i<$firstWeekday;$i++){
+for($i=0;$i<$firstWeekday;$i++){/*如果第一天是星期X則$firstWeekday=X，所以第一周就會先跑出X個空格，然後星期X才會開始在跑日期 */
     $dateHouse[]="";
 }
 
-for($i=0;$i<$monthDays;$i++){
-    $date=date("Y-m-d",strtotime("+$i days",strtotime($firstDay)));
-    $dateHouse[]=$date;
+for($i=0;$i<$monthDays;$i++){/*從星期二的位置開始跑迴圈，列出這個月的日期 */
+    $date=date("Y-m-d",strtotime("+$i days",strtotime($firstDay)));/*$i=0就是當天，$i=1就是第二天，$i=27就是第28天 */
+    $dateHouse[]=$date;/*所有的日期列出*/
 }
 
-for($i=0;$i<(6-$lastWeekday);$i++){
+for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的的空白就是用(6-最後一天是星期幾)得到空白 */
     $dateHouse[]="";
 }
 
 ?>
 
-<div class="table">
+<div class="table"> <!--table-->
 <div class='header'>日</div>
 <div class='header'>一</div>
 <div class='header'>二</div>
@@ -81,10 +81,10 @@ for($i=0;$i<(6-$lastWeekday);$i++){
 <div class='header'>六</div>
 <?php
 foreach($dateHouse as $k => $day){
-    $hol=($k%7==0 || $k%7==6)?'weekend':"";
+    $hol=($k%7==0 || $k%7==6)?'weekend':"";/*三元運算子(前面運算式為TRUE時的值是weekend，FALSE則為"空白") */
     
-    if(!empty($day)){
-        $dayFormat=date("j",strtotime($day));
+    if(!empty($day)){  /*天數不為空白 */
+        $dayFormat=date("j",strtotime($day));/*不補零的天數，ex:本月五日則為5 */
         echo "<div class='{$hol}'>{$dayFormat}</div>";
     }else{
         echo "<div class='{$hol}'></div>";
