@@ -70,8 +70,8 @@ for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的�
 }
 
 ?>
-
-<div class="table"> <!--table-->
+<!--table-->
+<div class="table"> 
 <div class='header'>日</div>
 <div class='header'>一</div>
 <div class='header'>二</div>
@@ -94,7 +94,7 @@ foreach($dateHouse as $k => $day){
 
 ?>
 </div>
-
+<!--table end-->
 
 
 </body>
