@@ -8,8 +8,15 @@
 </head>
 <body>
     <h1 style="text-align:center ;">會員登入</h1>
+    <?php
+    if (!empty($_GET['error'])){
+        echo "<h3 style='color:red'>{$_GET['error']}</h3>";
+    }
+    
+    
+    ?>
     <form action="chklogin.php" method="post">
-    <table style="text-align:center ;">
+    <table >
         <tr>
             <td>帳號:</td>
             <td><input type="text" name="acc" id=""></td>
