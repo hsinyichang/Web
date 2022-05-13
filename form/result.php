@@ -28,7 +28,7 @@
     }else{
         echo "體重過重，要開始健身囉";
     }
-    ?> 直接寫去計算頁也可以-->
+    ?> 直接寫去計算頁也可以 -->
 
     <br>
     <h3 style="text-align:center"><a href="bmi.html"><button>重新計算</button></a></h3> 
