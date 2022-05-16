@@ -14,5 +14,6 @@ if($bmi<18.5){
     $result="體重過重，要開始健身囉";
 }
 
-header("location:result.php?bmi=$bmi&result=$result");//把值傳遞給結果頁(要用雙引號才能顯示變數)
+header("location:result.php?bmi=$bmi&result=$result&weight=$weight&height=$height");//把值傳遞給結果頁(要用雙引號才能顯示變數)
+//這邊計算完要傳到result.php頁面
 ?>
