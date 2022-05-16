@@ -29,7 +29,10 @@
         echo "體重過重，要開始健身囉";
     }
     ?> 直接寫去計算頁也可以-->
-
+    <h3 style="text-align:center ;">
+        輸入的身高為 &nbsp;<?=$_GET['height']?><br>
+        輸入的體重為 &nbsp;&nbsp;&nbsp;<?=$_GET['weight']?>
+    </h3>
     <br>
     <h3 style="text-align:center"><a href="bmi.html"><button>重新計算</button></a></h3> 
     
