@@ -14,5 +14,6 @@ if(!isset($_COOKIE['login'])){
 <body>
     <h1>歡迎<?=$_COOKIE['login'];?></h1>
     <!-- 前面的cookie是設定login所以這裡也要同步 -->
+    <li><a href="logout.php">登出</a></li>
 </body>
 </html>
