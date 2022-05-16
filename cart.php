@@ -1,4 +1,4 @@
-<h1>購物車</h1>
+<h1>使用cookie模擬購物車</h1>
 <?php
 // setcookie('產品',"CPU",time()+3600);
 // setcookie('產品',"主機板",time()+3600);
