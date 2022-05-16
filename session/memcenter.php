@@ -1,3 +1,8 @@
+<?php
+if(!isset($_COOKIE['login'])){
+    header("location:login.php");
+}//如果login沒有值則回到登入頁面
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
