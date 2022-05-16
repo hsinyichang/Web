@@ -13,7 +13,8 @@
             <li>回首頁</li>
             <li>產品目錄</li>
             <?php
-            if(empty($_COOKIE['login'])){
+            session_start();//要用到session的地方都要加這行
+            if(empty($_SESSION['login'])){
             ?>
             <li><a href="login.php">登入</a> </li>
            

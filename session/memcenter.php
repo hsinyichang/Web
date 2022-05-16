@@ -1,5 +1,6 @@
 <?php
-if(!isset($_COOKIE['login'])){
+session_start();//要用到session的地方都要加這行
+if(!isset($_SESSION['login'])){
     header("location:login.php");
 }//如果login沒有值則回到登入頁面
 ?>
@@ -12,7 +13,7 @@ if(!isset($_COOKIE['login'])){
     <title>會員中心</title>
 </head>
 <body>
-    <h1>歡迎<?=$_COOKIE['login'];?></h1>
+    <h1>歡迎<?=$_SESSION['login'];?></h1>
     <!-- 前面的cookie是設定login所以這裡也要同步 -->
     <li><a href="logout.php">登出</a></li>
 </body>

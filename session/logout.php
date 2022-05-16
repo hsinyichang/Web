@@ -1,6 +1,5 @@
 <?php
-if(isset($_COOKIE['login'])){   //真正可以讓cookie刪除
-setcookie("login","",time()-1);
-}
+session_start();//要用到session的地方都要加這行
+unset($_SESSION['login']);
 header("location:index.php");
 ?>

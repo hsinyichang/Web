@@ -1,5 +1,6 @@
 <?php
-if(isset($_COOKIE['login'])){
+session_start();//要用到session的地方都要加這行
+if(isset($_SESSION['login'])){
     header("location:memcenter.php");
 }
 // 如果cookie的值還有的話就導到會員中心頁面
