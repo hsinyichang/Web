@@ -12,6 +12,7 @@ if($acc!=$default_user || $pw!=$default_pw){
     $error='帳號或密碼錯誤';
     header("location:login.php?error=$error");
 }else{
+    session_start();//要用到session的地方都要加這行
     $_SESSION['login']=$acc;
     header("location:memcenter.php?user=$acc");
 }
