@@ -151,8 +151,8 @@
          IF (DATEDIFF(CURRENT_DATE(),REPLACE(`birthday`,LEFT(`birthday`,4),LEFT(CURRENT_DATE(),4))) > 0 , 365-DATEDIFF(CURRENT_DATE(),REPLACE(`birthday`,LEFT(`birthday`,4),LEFT(CURRENT_DATE(),4)))
          , 0-DATEDIFF(CURRENT_DATE(),REPLACE(`birthday`,LEFT(`birthday`,4),LEFT(CURRENT_DATE(),4))))
          as '下次生日天數'
- FROM `students` 
- LIMIT 10;
+        FROM `students` 
+        LIMIT 10;
        </li>
        
 
