@@ -209,10 +209,67 @@
       <li>
         SELECT `dept`.`name`,
 		count(`students`.`id`) as '人數' 
-FROM `dept`
-LEFT JOIN `students` 
-ON `students`.`dept`=`dept`.`id`
-GROUP By `dept`.`name`
+        FROM `dept`
+        LEFT JOIN `students` 
+        ON `students`.`dept`=`dept`.`id`
+        GROUP By `dept`.`name`
+      </li>
+      <li>
+        SELECT `students`.`id`,
+                `students`.`name`,
+                `students`.`birthday`,
+                `students`.`uni_id`,
+                `dept`.`name` as '科系',
+                `graduate_school`.`name` as '畢業國中' ,
+                `status`.`status` as '畢業狀態'
+        FROM `students`
+        LEFT JOIN `graduate_school` 
+             ON `students`.`graduate_at`=`graduate_school`.`id`
+        LEFT JOIN `status` 
+             ON `students`.`status_code`=`status`.`code`
+        LEFT JOIN `dept` 
+             ON `students`.`dept`=`dept`.`id`
+      </li>
+  </ul>
+  <h3>子查詢</h3>
+   <ul>
+      <li>
+        SELECT `class_code` as '班級',
+		        count("*") as "人數" ,
+                (SELECT count(*) FROM `class_student`) as '總人數',
+                count(*) / (SELECT count(*) FROM `class_student`) as '比例'
+        FROM   `class_student` 
+        GROUP BY `class_code`
+      </li>
+      <li>
+        SELECT `class_student`.`school_num` as '學號',
+		        `students`.`name`,
+                `students`.`addr`
+        FROM `class_student`,`students` 
+        WHERE `class_student`.`school_num`=`students`.`school_num`
+      </li>
+      <li>
+        SELECT `class_student`.`school_num` as '學號',
+		        `A`.`name`,
+                `A`.`addr`
+        FROM `class_student`,
+              (SELECT `students`.`school_num`,`students`.`name`,`students`.`addr`  FROM `students`)A
+        WHERE `class_student`.`school_num`=`A`.`school_num`
+
+      </li>
+      <li>
+        SELECT `A`.`班級`,`A`.`人數`
+
+        FROM (SELECT `class_code` as '班級',
+                        count("*") as "人數" 
+               FROM   `class_student` 
+               GROUP BY `class_code`)A
+        WHERE `A`.`人數` >= (SELECT AVG(`B`.`人數`) FROM 
+                             (SELECT `class_code` as '班級',
+                                     count("*") as "人數" 
+                              FROM   `class_student` 
+                               GROUP BY `class_code`)B
+                            )
       </li>
   </ul>
 </body>
