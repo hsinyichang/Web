@@ -157,10 +157,64 @@
         FROM `students` 
         LIMIT 10;
        </li><!-- 取姓名、生日、年齡，假如現在時間和(REPLACE把自己的出生年分置換為現在的年份)的時間差>0，則執行365-時間差，<0則執行0-時間差 作為下次生日天數欄位-->
-            <!--  REPLACE('abcdefg','ced','xxx')='abxxxfg' 把第二個位置的東西換成第三個 -->
-
-       
+            <!--  REPLACE('abcdefg','ced','xxx')='abxxxfg' 把第二個位置的東西換成第三個 -->       
    </ul>
+
+   <h3>聯表查詢-form where</h3>
+   <ul>
+      <li>SELECT * FROM `students`,`major` WHERE `major`.`id`=`students`.`major`</li>
+      <li>SELECT `students`.*,`major`.`name` as 'major' FROM `students`,`major` WHERE `major`.`id`=`students`.`major`</li>
+      <li>SELECT `students`.`id`,`students`.`name`,`graduate_school`.`name` as '畢業國中' FROM `students`,`graduate_school`</li>
+      <li>
+        SELECT `students`.`id`,
+		        `students`.`name`,
+                `graduate_school`.`name` as '畢業國中' 
+        FROM `students`,`graduate_school` 
+        WHERE `students`.`graduate_at`=`graduate_school`.`id`
+      </li>
+      <li>
+        SELECT `students`.`id`,
+		        `students`.`name`,
+                `graduate_school`.`name` as '畢業國中' ,
+                `status`.`status` as '畢業狀態'
+        FROM `students`,`graduate_school`,`status`
+        WHERE `students`.`graduate_at`=`graduate_school`.`id`
+      </li>
+      <li>
+        SELECT `students`.`id`,
+		        `students`.`name`,
+                `graduate_school`.`name` as '畢業國中' ,
+                `status`.`status` as '畢業狀態'
+        FROM `students`,`graduate_school`,`status`
+        WHERE `students`.`graduate_at`=`graduate_school`.`id` && 
+	          `students`.`status_code`=`status`.`code`
+      </li>
+      <li>
+        SELECT `students`.`id`,
+		       `students`.`name`,
+               `students`.`birthday`,
+               `students`.`uni_id`,
+               `dept`.`name` as '科系',
+               `graduate_school`.`name` as '畢業國中' ,
+               `status`.`status` as '畢業狀態'
+        FROM `students`,`graduate_school`,`status`,`dept`
+        WHERE `students`.`graduate_at`=`graduate_school`.`id` && 
+	          `students`.`status_code`=`status`.`code` &&
+              `students`.`dept`=`dept`.`id`
+      </li>
+  </ul>
+  <h3>聯表查詢-Out Join</h3>
+   <ul>
+      <li>SELECT `dept`.`name`,count(*) as '人數' FROM `dept`,`students` WHERE `students`.`dept`=`dept`.`id` GROUP By `students`.`dept`</li>
+      <li>
+        SELECT `dept`.`name`,
+		count(`students`.`id`) as '人數' 
+FROM `dept`
+LEFT JOIN `students` 
+ON `students`.`dept`=`dept`.`id`
+GROUP By `dept`.`name`
+      </li>
+  </ul>
 </body>
 
 </html>
