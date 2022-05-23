@@ -139,12 +139,15 @@
        <li>SELECT Month(`birthday`) as '出生月份', count(*) as '人數'
         FROM `students` 
         GROUP BY MONTH(`birthday`) 
-        ORDER BY MONTH(`birthday`)</li>
-       <li>SELECT `name` ,
+        ORDER BY MONTH(`birthday`)
+        </li><!--取出生日的月份為'出生月份'&人數，用月份群組起來(同月生的有幾人)，以月分作為排序-->
+       
+        <li>SELECT `name` ,
 		    FLOOR(DATEDIFF(CURRENT_DATE(),`birthday`)/365) AS '年齡' 
             FROM `students` 
             LIMIT 10;
-        </li>
+        </li><!--取姓名、(現在跟生日的日期差天數/365)得到年齡，只取10筆-->
+
        <li>SELECT `name` ,
         `birthday`,
          FLOOR(DATEDIFF(CURRENT_DATE(),`birthday`)/365) AS '年齡' ,
@@ -153,8 +156,8 @@
          as '下次生日天數'
         FROM `students` 
         LIMIT 10;
-       </li>
-       
+       </li><!-- 取姓名、生日、年齡，假如現在時間和(REPLACE把自己的出生年分置換為現在的年份)的時間差>0，則執行365-時間差，<0則執行0-時間差 作為下次生日天數欄位-->
+            <!--  REPLACE('abcdefg','ced','xxx')='abxxxfg' 把第二個位置的東西換成第三個 -->
 
        
    </ul>
