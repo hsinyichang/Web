@@ -16,7 +16,9 @@
     <?php
     $conn=mysqli_connect('localhost','root','','school2');
     
-    $sql="SELECT `students`.*,`dept`.`code`,`dept`.`name` as '科系' FROM `students`,`dept` WHERE `dept`.`id`=`students`.`dept`";
+    $sql="SELECT `students`.*,`dept`.`code`,`dept`.`name` as '科系' 
+          FROM `students`,`dept` 
+          WHERE `dept`.`id`=`students`.`dept`";
 
     $query=mysqli_query($conn,$sql);
     $rows=mysqli_fetch_array($query,MYSQLI_BOTH);
