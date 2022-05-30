@@ -10,5 +10,5 @@ $pdo->query($sql);
 //將資料新增回schoo的資料庫
 
 header("location:index.php");
-//導回首業
+//導回首頁
 ?>
