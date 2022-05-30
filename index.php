@@ -44,7 +44,7 @@
     <h3><button><a href="add.php">新增學生資料</a></button></h3>
     <h3><form action="add.php" method="get"><button>新增學生資料</button></form></h3>
     <h3><button onclick="location.href='add.php'">新增學生資料</button></h3>
-    <!-- 以上三種都可作為 新增資料的按鈕選項 -->
+    <!-- 以上三種方法都可作為 新增資料的按鈕選項 -->
     <table>
     <tr>
         <td>序號</td>
@@ -53,21 +53,25 @@
         <td>科系</td>
         <td>父母</td>
         <td>畢業國中</td>
+        <td>操作</td>
     </tr>
 
     <?php
-        foreach($rows as $key => $row){
-            echo "<tr>";
-                echo "<td>{$row['id']}</td>";
-                echo "<td>{$row['uni_id']}</td>";
-                echo "<td>{$row['name']}</td>";
-                echo "<td>{$row['major']}</td>";
-                echo "<td>{$row['parent']}</td>";
-                echo "<td>{$row['secondary']}</td>";
-            echo "</tr>";
-        }
-        echo"</table>";
+    foreach($rows as $key => $row){
+        echo "<tr>";
+            echo "<td>{$row['id']}</td>";
+            echo "<td>{$row['uni_id']}</td>";
+            echo "<td>{$row['name']}</td>";
+            echo "<td>{$row['major']}</td>";
+            echo "<td>{$row['parent']}</td>";
+            echo "<td>{$row['secondary']}</td>";
+            echo "<td>";
+            echo "<button><a href='edit.php?id={$row['id']}'>編輯</a></button>";
+            echo "</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
     ?>
-
+<!-- 若要抓單一次資料可用get post    若要在多個頁面用到可用cookie session -->
 </body>
 </html>
