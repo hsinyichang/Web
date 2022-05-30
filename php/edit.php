@@ -57,6 +57,7 @@ $students=$pdo->query($sql)->fetch();
         <label for="major">科別:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="major" value="<?=$students['major'];?>"></label>
         <label for="secondary">畢業國中:<input type="text" name="secondary" value="<?=$students['secondary'];?>"></label><br>
         <input type="hidden" name="id" value="<?=$id;?>">
+        <!--讓id不可顯示被更改-->
         <input type="submit" value="更新">
         <input type="reset" value="重置">
     </form>
