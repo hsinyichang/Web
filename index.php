@@ -30,71 +30,39 @@
     </style>
 </head>
 <body>
-    <h1>PHP連線資料庫(MySQLi)-函式類型</h1>
+    <h1>PHP連線資料庫</h1>
     <?php
-    // $conn=mysqli_connect('localhost','root','','school2');
-    
-    // $sql="SELECT `students`.*,`dept`.`code`,`dept`.`name` as '科系' 
-    //       FROM `students`,`dept` 
-    //       WHERE `dept`.`id`=`students`.`dept`";
-
-    // $query=mysqli_query($conn,$sql);
-    // $rows=mysqli_fetch_array($query,MYSQLI_BOTH);
-
-    // echo var_dump($query);
-
-    // echo "<pre>";
-    // print_r($rows);
-    // echo "</pre>";
-
-    // 要取下一筆資料
-
-    // $rows=mysqli_fetch_array($query,MYSQLI_BOTH);
-    // echo "<pre>";
-    // print_r($rows);
-    // echo "</pre>";
-
-    // echo $rows[0][3];
-    // echo "<br>";
-    // echo $rows[0]['birthday'];
-    ?>
-    <h1>php連線資料庫(MySQLi)-函式類型-迴圈撈資料</h1>  
-    <?php
-    // $conn=mysqli_connect('localhost','root','','school2');
-    
-    // $sql="SELECT `students`.*,`dept`.`code`,`dept`.`name` as '科系' FROM `students`,`dept` WHERE `dept`.`id`=`students`.`dept`";
-
-    // $query=mysqli_query($conn,$sql);
-    
-    // $count=0;
-    // while($row=mysqli_fetch_array($query,MYSQLI_BOTH)){
-    //     if($row['name']=='王鳳如'){
-    //         echo "<pre>";
-    //         print_r($row);
-    //         echo "</pre>";
-    //     }
-    //     $count++;
-    // }
-    // echo $count;
-    ?>  
-    
-    <h1>使用foreach的方式撈資料</h1>
-    <?php
-        $dsn="mysql:host=localhost;charset=utf8;dbname=school2";
+        
+        $dsn="mysql:host=localhost;charset=utf8;dbname=school";
         $pdo=new PDO($dsn,'root','');
     
         $sql="SELECT * FROM `students`";
     
         $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+     ?>
+     
+    <h3><button><a href="add.php">新增學生資料</a></button></h3>
+    <h3><form action="add.php" method="get"><button>新增學生資料</button></form></h3>
+    <h3><button onclick="location.href='add.php'">新增學生資料</button></h3>
+    <table>
+    <tr>
+        <td>序號</td>
+        <td>學號</td>
+        <td>學生姓名</td>
+        <td>科系</td>
+        <td>父母</td>
+        <td>畢業國中</td>
+    </tr>
 
-        echo"<table>";
+    <?php
         foreach($rows as $key => $row){
             echo "<tr>";
                 echo "<td>{$row['id']}</td>";
-                echo "<td>{$row['school_num']}</td>";
+                echo "<td>{$row['uni_id']}</td>";
                 echo "<td>{$row['name']}</td>";
-                echo "<td>{$row['dept']}</td>";
-                echo "<td>{$row['parents']}</td>";
+                echo "<td>{$row['major']}</td>";
+                echo "<td>{$row['parent']}</td>";
+                echo "<td>{$row['secondary']}</td>";
             echo "</tr>";
         }
         echo"</table>";
