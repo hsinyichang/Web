@@ -39,20 +39,23 @@ $students=$pdo->query($sql)->fetch();
 // echo "<pre>";
 // print_r($students);
 // echo "</pre>";
+
+//把要編輯的資料叫出來
 ?>
 
 
     <form action="update.php" method="post">
-        <label for="uni_id">學號:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="uni_id" value=<?=$students['uni_id'];?>></label>
-        <label for="seat_num">班級座號:<input type="text" name="seat_num" value=<?=$students['seat_num'];?>></label>
-        <label for="name">姓名:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="name" value=<?=$students['name'];?>></label>
-        <label for="birthday">生日:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="birthday" value=<?=$students['birthday'];?>></label>
-        <label for="national_id">身分證碼:<input type="text" name="national_id" value=<?=$students['national_id'];?>></label>
-        <label for="address">住址:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="address" value=<?=$students['address'];?>></label>
-        <label for="parent">家長:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="parent" value=<?=$students['parent'];?>></label>
-        <label for="telphone">電話:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="telphone" value=<?=$students['telphone'];?>></label>
-        <label for="major">科別:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="major" value=<?=$students['major'];?>></label>
-        <label for="secondary">畢業國中:<input type="text" name="secondary" value=<?=$students['secondary'];?>></label><br>
+        <!-- 以下  value用php呼叫資料 -->
+        <label for="uni_id">學號:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="uni_id" value="<?=$students['uni_id'];?>"></label>
+        <label for="seat_num">班級座號:<input type="text" name="seat_num" value="<?=$students['seat_num'];?>"></label>
+        <label for="name">姓名:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="name" value="<?=$students['name'];?>"></label>
+        <label for="birthday">生日:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="birthday" value="<?=$students['birthday'];?>"></label>
+        <label for="national_id">身分證碼:<input type="text" name="national_id" value="<?=$students['national_id'];?>"></label>
+        <label for="address">住址:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="address" value="<?=$students['address'];?>"></label>
+        <label for="parent">家長:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="parent" value="<?=$students['parent'];?>"></label>
+        <label for="telphone">電話:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="telphone" value="<?=$students['telphone'];?>"></label>
+        <label for="major">科別:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="major" value="<?=$students['major'];?>"></label>
+        <label for="secondary">畢業國中:<input type="text" name="secondary" value="<?=$students['secondary'];?>"></label><br>
         <input type="hidden" name="id" value="<?=$id;?>">
         <input type="submit" value="更新">
         <input type="reset" value="重置">
