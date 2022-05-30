@@ -42,8 +42,8 @@
      ?>
      
     <h3><button><a href="add.php">新增學生資料</a></button></h3>
-    <h3><form action="add.php" method="get"><button>新增學生資料</button></form></h3>
-    <h3><button onclick="location.href='add.php'">新增學生資料</button></h3>
+    <!-- <h3><form action="add.php" method="get"><button>新增學生資料</button></form></h3> -->
+    <!-- <h3><button onclick="location.href='add.php'">新增學生資料</button></h3> -->
     <!-- 以上三種方法都可作為 新增資料的按鈕選項 -->
     <table>
     <tr>
