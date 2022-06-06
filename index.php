@@ -20,13 +20,24 @@
 </head>
 <body>
     <nav>
+        <?php
+        include_once "connect.php";/*放到程式開頭，因裡面有session start */
+        if(isset($_SESSION['user'])){
+        ?>
+    <a href="login.php">登出</a>
+        <?php
+        }else{
+        ?>
     <a href="login.php">登入</a>
+        <?php    
+        }
+        ?>
     </nav>
     <h1>問券調查</h1>
 
 
     <?php 
-include_once "connect.php";
+
 
 $sql="select * from `users` ";
 

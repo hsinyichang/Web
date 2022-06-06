@@ -3,7 +3,14 @@
 
 include "connect.php";
 $acc=$_POST['acc'];
-$pw=$_POST['pw'];
+$pw=md5($_POST['pw']);//編碼過的
+
+/* if($acc==資料表中的acc && $pw==資料表中的pw){
+    //登入成功->會員中心
+}else{
+    //登入失敗->回到登入頁->顯示錯誤訊息
+}
+ */
 
 $sql="SELECT count(*) FROM `users` WHERE `acc`='$acc' && `pw`='$pw'";
 

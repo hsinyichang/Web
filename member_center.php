@@ -5,6 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>會員中心</title>
+    <style>
+        .remove{
+            color:#eee;
+        }
+        .remove:hover{
+            color:red;
+        }
+    </style>
 </head>
 <body>
 <nav><a href="logout.php">登出</a></nav>
@@ -27,6 +35,14 @@
     echo 'E-mail:'.$user['email'].'<br>';
     ?>
     <button><a href="edit.php?id=<?=$user['id'];?>">編輯</a></button>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <a class="remove" href='remove_acc.php?id=<?=$user['id'];?>'>移除個人資料</a>
+
     <!--
      
     <form action="edit.php" method="post">
