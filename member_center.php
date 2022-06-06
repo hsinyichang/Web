@@ -12,7 +12,7 @@
     <?php
     include "connect.php";//session_start()已寫在裡面了
     ?>
-    
+
     歡迎<?=$_SESSION['user'];?>,祝你有美好的一天
 
     <?php
@@ -26,5 +26,16 @@
     echo '生日:'.$user['birthday'].'<br>';
     echo 'E-mail:'.$user['email'].'<br>';
     ?>
+    <button><a href="edit.php?id=<?=$user['id'];?>">編輯</a></button>
+    <!--
+     
+    <form action="edit.php" method="post">
+    <input type="hidden" name="id" value="<?=$user['id'];?>">
+    <input type="submit" value="編輯">
+    </form>  第二種
+    
+    重新導向
+    <button onclick="location.href='edit.php?id=<?=$user['id'];?>'">編輯</button>  第三種
+    -->
 </body>
 </html>
