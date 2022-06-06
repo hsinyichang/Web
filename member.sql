@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
   `acc` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pw` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pw` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `birthday` date NOT NULL,
   `passnote` varchar(24) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL
