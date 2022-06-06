@@ -1,6 +1,6 @@
 <?php
 include_once "connect.php";
-$acc=$_POST['acc'];
+
 
 $sql="UPDATE `users` 
         SET `pw`='{$_POST['pw']}',
