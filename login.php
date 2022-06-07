@@ -5,15 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>會員登入</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <style>
         body{
+            font-family: '華康粗圓體';
             background: #43C6AC;  /* fallback for old browsers */
             background: -webkit-linear-gradient(to right, #F8FFAE, #43C6AC);  /* Chrome 10-25, Safari 5.1-6 */
             background: linear-gradient(to right, #F8FFAE, #43C6AC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
         }
+        p{
+            padding-top:150px ;
+            text-align:center;
+            font-size: 28px;
+            
+            
+        }
         div{
-            margin-top: 30%;
+            
+            margin: auto;
+            width:380px;
+            height: 350px;
         }
         table{
             background-color:rgb(250 240 158 / 50%);
@@ -54,10 +68,16 @@
             border: 1px solid lightgray;
             border-radius: 24%;
         }
+        .fa-regular{
+        animation:fadeIn;
+        animation-duration: 0.7s;
+        animation-iteration-count: infinite;
+        }
     </style>
 </head>
 <body>
     <div>
+        <p><i class="fa-regular fa-bell" style="color:yellow ;"></i>&nbsp;&nbsp;會員登入</p>
     <?php
 
 if(isset($_GET['error'])) {
