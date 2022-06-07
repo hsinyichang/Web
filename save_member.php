@@ -11,6 +11,6 @@ $sql="UPDATE `users`
                     
 $pdo->exec($sql);//登入帳號後把更新的資料存回資料庫
 
-header('location:login.php');
+header('location:member_center.php');
 
 ?>
