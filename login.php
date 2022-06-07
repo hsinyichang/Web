@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
     <style>
+        *{
+            box-sizing: border-box;
+        }
         body{
             font-family: '華康粗圓體';
             background: #43C6AC;  /* fallback for old browsers */

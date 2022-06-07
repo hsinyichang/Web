@@ -28,7 +28,7 @@
         include_once "connect.php";/*放到程式開頭，因裡面有session start */
         if(isset($_SESSION['user'])){/*這裡判斷是否有session為登出或登入 */
         ?>
-    <a href="login.php">登出</a>
+    <a href="member_center.php">會員中心</a>&nbsp;&nbsp;<a href="login.php">登出</a>
         <?php
         }else{
         ?>
