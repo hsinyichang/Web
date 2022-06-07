@@ -10,4 +10,4 @@ $pdo->exec($sql);
 
 header('location:login.php');
 
-?>674f3c2c1a8a
+?>
