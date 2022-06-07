@@ -7,14 +7,18 @@
     <title>Document</title>
     <style>
         body{
-            width: 900px;
+            width: 1000px;
             margin: auto;
+
         }
         nav{
             text-align: right;
+            background-color: #eee;
+            height: 25px;
         }
         h1{
             text-align: center;
+            margin: 0;
         }
     </style>
 </head>
@@ -22,7 +26,7 @@
     <nav>
         <?php
         include_once "connect.php";/*放到程式開頭，因裡面有session start */
-        if(isset($_SESSION['user'])){
+        if(isset($_SESSION['user'])){/*這裡判斷是否有session為登出或登入 */
         ?>
     <a href="login.php">登出</a>
         <?php
@@ -36,7 +40,7 @@
     <h1>問券調查</h1>
 
 
-    <?php 
+    <!-- <?php 
 
 
 $sql="select * from `users` ";
@@ -47,6 +51,6 @@ foreach($users as $user){
     echo $user['acc']."<br>";
 }
 
-?>
+?> 這裡可以看到所註冊的會員帳號-->
 </body>
 </html>
