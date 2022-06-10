@@ -169,6 +169,7 @@ function diamond($lines){
     }
 
 }
+//----------------------------------------------
 //all()-給定資料表名後，會回傳整個資料表的資料
 function all($table){
     $dsn="mysql:host=localhost;charset=utf8;dbname=school2";
@@ -177,7 +178,7 @@ function all($table){
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
-
+//----------------------------------------------
 //find()-會回傳資料表指定id的資料
 function find($table,$id){
     $dsn="mysql:host=localhost;charset=utf8;dbname=school2";
@@ -197,19 +198,19 @@ function show($row){
         echo "這不是一筆標準的資料，請重新輸入";
     }
 }
-
+//----------------------------------------------
 //update()-給定資料表的條件後，會去更新相應的資料。
 function update(){
 
 }
 
-
+//----------------------------------------------
 //insert()-給定資料內容後，會去新增資料到資料表
 function insert(){
 
 }
 
-
+//----------------------------------------------
 //del()-給定條件後，會去刪除指定的資料
 function del(){
 
