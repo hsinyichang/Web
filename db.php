@@ -103,15 +103,31 @@ $table=isset($_GET['table'])?$_GET['table']:'dept';
  <div class="quiz">
  update()-給定資料表的條件後，會去更新相應的資料。
  </div>
+ <div>
+ <?php
+// update('students',11,['name'=>'石城孝','parents'=>'石雄偉','dept'=>3]);
+
+?>
+ </div>
  <!-- ---------------------------------------- -->
  <div class="quiz">
  insert()-給定資料內容後，會去新增資料到資料表
+ </div>
+ <div>
+ <?php
+ insert('dept',['code'=>'601','name'=>'資工系']);
+ ?>
  </div>
  <!-- ---------------------------------------- -->
  <div class="quiz">
  del()-給定條件後，會去刪除指定的資料
  </div>
- 
+ <div>
+ <?php
+
+del('dept',7);
+?>
+ </div>
 
 </body>
 </html>
@@ -207,20 +223,48 @@ function show($row){
 }
 //----------------------------------------------
 //update()-給定資料表的條件後，會去更新相應的資料。
-function update(){
+//$data=['aaa'=>'xxxx','bbb'=>'yyyy']
+function update($table,$id,$data){
+    $pdo=pdo('school2');
+    if(is_array($data)){
+        /**
+         * $data=['school_num'=>'100221,
+         *        'name'=>'白金圓',
+         *        'classroom'=>'10101];
+         * 
+         * ==> 'school_num'='100221, 'name'='白金圓', 'classroom'='10101
+         */
 
+        foreach($data as $key => $value){
+            $tmp[]="`$key`='$value'";
+        }
+        $set=join(',',$tmp);
+        $sql= "UPDATE `$table` SET $set WHERE `id`='$id'";
+    }else{
+        return "資料格式錯誤";
+    }
+    return $pdo->exec($sql);  //更新資料
 }
 
 //----------------------------------------------
 //insert()-給定資料內容後，會去新增資料到資料表
-function insert(){
-
-}
+function insert($table,$data){
+        $pdo=pdo('school2');
+            $k="`".join("`,`",array_keys($data))."`";
+            $v="'".join("','",$data)."'";
+        $sql="INSERT INTO `$table` ($k) VALUES($v)";
+    
+    
+        $pdo->exec($sql);
+    }
 
 //----------------------------------------------
 //del()-給定條件後，會去刪除指定的資料
-function del(){
+function del($table,$id){
+    $pdo=pdo('school2');
+    $sql="DELETE FROM `$table` WHERE `id`='$id'";
 
+    return $pdo->exec($sql);
 }
 
 ?>
