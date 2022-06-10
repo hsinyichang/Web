@@ -57,7 +57,7 @@ starts($size,$shape);//呼叫function(變數為使用者輸入的資料↑)
  </div>
  <div>
  <?php
-$table=isset($_GET['table'])?$_GET['table']:'dept'
+$table=isset($_GET['table'])?$_GET['table']:'dept';//預設若沒輸入的話會顯示dept
 
 ?>
  <form action="db.php">
@@ -169,12 +169,12 @@ function diamond($lines){
     }
 
 }
-
+//----------------------------------------------
 function pdo($db){  //直接寫個function在前面
     $dsn="mysql:host=localhost;charset=utf8;dbname=$db";
     return new PDO($dsn,'root','');  //這裡用return
 }
-//----------------------------------------------
+
 //all()-給定資料表名後，會回傳整個資料表的資料
 function all($table){
     // $dsn="mysql:host=localhost;charset=utf8;dbname=school2";
