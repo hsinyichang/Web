@@ -170,16 +170,16 @@ function diamond($lines){
 
 }
 
-function pdo($db){
+function pdo($db){  //直接寫個function在前面
     $dsn="mysql:host=localhost;charset=utf8;dbname=$db";
-    return new PDO($dsn,'root','');
+    return new PDO($dsn,'root','');  //這裡用return
 }
 //----------------------------------------------
 //all()-給定資料表名後，會回傳整個資料表的資料
 function all($table){
     // $dsn="mysql:host=localhost;charset=utf8;dbname=school2";
     // $pdo=new PDO($dsn,'root','');
-    $pdo=pdo('school2');
+    $pdo=pdo('school2');  //直接呼叫pdo(裡面打dbname)
     $sql="SELECT * FROM `$table`";
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
