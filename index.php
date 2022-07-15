@@ -1,29 +1,45 @@
-<?php
-define('PI',3.1415);
+<!DOCTYPE html>
+<html lang="en">
 
-$name="狗狗";
-$price=5000;
-$total=100*$price;
-echo $name;
-echo '<br>';
-echo $price;
-echo '<br>';
-echo $total;
-echo '<br>';
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX 非同步的Javascript 及 XML 技術</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        font-size: 1.8rem;
+    }
+    </style>
+</head>
 
-$name="貓貓";
-$price=4000;
-$total=100*$price;
-echo $name;
-echo '<br>';
-echo $price;
-echo '<br>';
-echo $total;
-echo '<br>';
+<body>
+    <h1 class="header">AJAX 非同步的Javascript 及 XML 技術</h1>
+    <div class="types">
+        <a href="xhr.html">XMLHttpRequest</a>
+    </div>
+    <div class="types">
+        <a href="fetch.html">Fetch</a>
+    </div>
+    <div class="types">
+        <a href="jquery.html">jQuery</a>
+    </div>
+    <div class="types">
+        <a href="axios.html">axios</a>
+    </div>
+    <div class="types">
+        <a href="./app1/index.html">用ajax取代iframe</a>
+    </div>
+    <div class="types">
+        <a href="./app2/index.html">用ajax做CRUD功能</a>
+    </div>
+    <div class="types">
+        <a href="./app3/index.html">modal中的表單行為</a>
+    </div>
+</body>
 
-echo PI;
-echo '<br>';
-echo PI*30*30;//直接呼叫常數運算
-echo'<br>';
-
-?>
+</html>
