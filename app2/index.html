@@ -47,7 +47,7 @@
   <a href="javascript:query(109)">109</a>
   <a href="javascript:query(110)">110</a>
   <!-- query(xxx)裡面xxx就是帶入下面的班級號碼 -->
-  <h3 id="classnum"></h3>
+  <h3 id="classnum" data-classroom="101"></h3>
   <div id="result"></div>
   <table id="list">
 
@@ -86,7 +86,7 @@ function create(){
 //查詢資料的函式
 function query(classroom){
   $("#classnum").html(`現在顯示的是${classroom}班的學生`)
-  
+  $("#room").data('classroom',classroom)
   $.get("api/query.php",{classroom},(students)=>{//classroom是database裡的班級
     
     students=JSON.parse(students)
@@ -142,7 +142,8 @@ function update(classroom,id){
 }
 
 //刪除資料的函式
-function del(classroom,id){
+function del(id){
+  let classroom=$("#room").data('classroom')
   $.post("./api/delete.php",{id},(res)=>{
       if(parseInt(res)===1){
         $("#result").css({background:'lightblue',color:'blue',display:'block'}).text("刪除成功");
@@ -152,7 +153,7 @@ function del(classroom,id){
 
       query(classroom);
       setTimeout(()=>{
-        $("#result").hide();
+        $("#result").hide(500);
       },3000)
   })
 }
