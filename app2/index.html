@@ -15,6 +15,7 @@
   <h1 class="header">學生資料管理系統</h1>
   <div id="addForm">
     <form method="post">  <!--這裡不需要action-->
+      新增學員
       <p>班級：<input type="number" name="classroom" id="classroom"></p>
       <p>座號：<input type="number" name="seatnum" id="seatnum"></p>
       <p>姓名：<input type="text" name="name" id="name"></p>
@@ -24,7 +25,14 @@
   </div>
 
   <div id="editForm">
-
+    <form method="post">  <!--這裡不需要action-->
+      編輯學員
+      <p>班級：<input type="number" name="classroom" id="eClassroom" value=""></p>
+      <p>座號：<input type="number" name="seatnum" id="eSeatnum" value=""></p>
+      <p>姓名：<input type="text" name="name" id="eName" value=""></p>
+      <p>生日：<input type="date" name="birthday" id="eBirthday" value=""></p>
+      <p><input type="button" value="確認編輯" onclick="update()"></p>
+    </form>
   </div>
 
   <a href="javascript:query(101)">101</a>
@@ -77,6 +85,7 @@ function create(){
 //查詢資料的函式
 function query(classroom){
   $("#classnum").html(`現在顯示的是${classroom}班的學生`)
+  
   $.get("api/query.php",{classroom},(students)=>{//classroom是database裡的班級
     
     students=JSON.parse(students)
@@ -86,6 +95,9 @@ function query(classroom){
       tr=tr+`<tr>
                 <td>${val.name}</td>
                 <td>${val.birthday}</td>
+                <td>
+                  <button onclick='edit(${classroom},${val.id})'>編輯(${val.id}))</button>
+                </td>
                 <td>
                     <button onclick='del(${classroom},${val.id})'>刪除(${val.id}))</button>
                 </td>
@@ -97,9 +109,20 @@ function query(classroom){
 }
 
 //編輯資料的函式
-function update(){
+function update(classroom,id){
 
 }
+//取得要編輯的資料
+function edit(id){
+  $.get("./api/show.php",{id},(student)=>{
+      student=JSON.parse(student)
+      $("#eClassroom").val(student.classroom)
+      $("#eSeatnum").val(student.seat_num)
+      $("#eName").val(student.name)
+      $("#eBirthday").val(student.birthday)
+  })
+}
+
 
 //刪除資料的函式
 function del(classroom,id){
