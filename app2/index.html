@@ -97,10 +97,10 @@ function query(classroom){
                 <td>${val.name}</td>
                 <td>${val.birthday}</td>
                 <td>
-                  <button onclick='edit(${classroom},${val.id})'>編輯(${val.id}))</button>
+                  <button onclick='edit(${val.id})'>編輯(${val.id}))</button>
                 </td>
                 <td>
-                    <button onclick='del(${classroom},${val.id})'>刪除(${val.id}))</button>
+                    <button onclick='del(${val.id})'>刪除(${val.id}))</button>
                 </td>
              </tr>`;
     })
