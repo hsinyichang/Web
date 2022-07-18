@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery</title>
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .card-group{
+            width:80vw;
+            margin:auto;
+        }
+        .card-group .card{
+            flex:unset;
+            padding:1rem;
+            border:0;
+
+        }
+        .card-group .card .card-body{
+            flex:unset;
+            padding:0.5rem;
+            border:1px solid #ccc;
+            border-radius: 0.5rem;
+            min-height:15rem;
+        }
+        .name{
+            font-weight: bolder;
+            border-bottom:1px solid #999;
+            margin:0.25rem 0;
+        }
+        .summary{
+            
+            border-bottom:1px solid #ddd;
+            box-shadow: 0 0 5px #ccc;
+            margin:0.5rem 0;
+            width:90%;
+            float:right;
+
+        }
+    </style>
+</head>
+<body>
+    <h1 class="header">jQuery</h1>
+    <div class="title"></div>
+    <h4></h4>
+    <ul class="card-group">
+
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>    
+    <script src="vanilla.js"></script>    
+</body>
+</html>
+<script>
+    /********************************************************
+    * 1.api網址  https://kktix.com/events.json
+    * 2.選擇$.ajax()、$.get()、$.post()其中一種方式
+    * 3.建立回呼函式(call back function)來處理回應時的各項行為
+    * 4.建立錯誤處理
+    ********************************************************/
+    //利用$.ajax()方法傳送請求並取得回應
+/*     $.ajax(
+      {
+        url:'https://kktix.com/events.json',
+        type:'get',
+        success:(res)=>{
+            eventList(res)
+        },
+      }
+    )   
+ */
+    
+    //利用$.get()方法傳送請求並取得回應
+      $.get('https://ws.kinmen.gov.tw/001/Upload/0/relfile/0/0/ac05c8b2-7a86-47e9-8ac1-df4811b0ab41.json',(res)=>{
+        console.log(res);
+      })
+
+  </script>

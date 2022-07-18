@@ -8,13 +8,41 @@
     <link rel="shortcut icon" href="#" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <!---匯入要使用的函式庫--->
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </head>
 <body>
   <h1 class="header">學生資料管理系統</h1>
+  <div id="addForm">
+    <form method="post">
+      <p>班級：<input type="number" name="classroom" id="classroom"></p>
+      <p>座號：<input type="number" name="seatnum" id="seatnum"></p>
+      <p>姓名：<input type="text" name="name" id="name"></p>
+      <p>生日：<input type="date" name="birthday" id="birthday"></p>
+      <p><input type="button" value="確認新增" onclick="create()"></p>
+    </form>
+  </div>
 
-  
+  <div id="editForm">
+
+  </div>
+
+  <a href="javascript:query(101)">101</a>
+  <a href="javascript:query(102)">102</a>
+  <a href="javascript:query(103)">103</a>
+  <a href="javascript:query(104)">104</a>
+  <a href="javascript:query(105)">105</a>
+  <a href="javascript:query(106)">106</a>
+  <a href="javascript:query(107)">107</a>
+  <a href="javascript:query(108)">108</a>
+  <a href="javascript:query(109)">109</a>
+  <a href="javascript:query(110)">110</a>
+  <!-- query(xxx)裡面xxx就是帶入下面的班級號碼 -->
+  <h3 id="classnum"></h3>
+  <table id="list">
+
+  </table>
+    
 </body>
 </html>
 <script>
@@ -25,16 +53,40 @@
 * 4.是否會有回傳值？回傳值的功用及處理？
 * 5.是否需要更新畫面內容？更新畫面的方法？
 ************************************/
-
+// query(101);
 
 //新增資料的函式
 function create(){
-
+  let form={
+    "classroom":$("#classroom").val(),
+    "seatnum":$("#seatnum").val(),
+    "name":$("#name").val(),
+    "birthday":$("#birthday").val()
+  }
+  $.post("./api/insert.php",form,(res)=>{
+    if(parseInt(res)===1){
+      alert("新增成功")
+      query(form.classroom)
+    }else{
+      alert("新增失敗")
+    }
+  })
 }
 
 //查詢資料的函式
-function query(){
+function query(classroom){
+  $("#classnum").html(`現在顯示的是${classroom}班的學生`)
+  $.get("api/query.php",{classroom},(students)=>{//classroom是database裡的班級
+    
+    students=JSON.parse(students)
+    console.log(students)
+    let tr="";
+    students.forEach((val,idx)=>{
+      tr=tr+`<tr><td>${val.name}</td><td>${val.birthday}</td></tr>`;
+    })
 
+    $("#list").html(tr);
+  })
 }
 
 //編輯資料的函式
