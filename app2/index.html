@@ -14,7 +14,7 @@
 <body>
   <h1 class="header">學生資料管理系統</h1>
   <div id="addForm">
-    <form method="post">
+    <form method="post">  <!--這裡不需要action-->
       <p>班級：<input type="number" name="classroom" id="classroom"></p>
       <p>座號：<input type="number" name="seatnum" id="seatnum"></p>
       <p>姓名：<input type="text" name="name" id="name"></p>
@@ -66,7 +66,7 @@ function create(){
   $.post("./api/insert.php",form,(res)=>{
     if(parseInt(res)===1){
       alert("新增成功")
-      query(form.classroom)
+      query(form.classroom)//再查詢呼叫(重整)一次你輸入的班級號碼列表，使用下面的query方法
     }else{
       alert("新增失敗")
     }
