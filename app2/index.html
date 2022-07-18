@@ -1,21 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>學生資料管理系統</title>
-    <link rel="shortcut icon" href="#" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <!---匯入要使用的函式庫--->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>學生資料管理系統</title>
+  <link rel="shortcut icon" href="#" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <!---匯入要使用的函式庫--->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
+
 <body>
   <h1 class="header">學生資料管理系統</h1>
-  
-  <div class="btn btn-primary" onclick="loadForm('add')">新增學生</div>
+<div class="container" style="text-align: center;">
+ 
+  <div class="btn btn-primary position-sticky sticky-top" onclick="loadForm('add')" >新增學生</div>
 
+<!-- Modal -->
+<div class="modal fade" id="stuModal" tabindex="-1" aria-labelledby="stuModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="stuModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
   <div id="studentForm">
   </div>
 
@@ -35,55 +58,69 @@
   <table id="list">
 
   </table>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous">
+  </script>
 </body>
+
 </html>
 <script>
-/************************************
-* 1.考慮觸發行為的事件
-* 2.建立監聽行為
-* 3.考慮是否需要代入參數
-* 4.是否會有回傳值？回傳值的功用及處理？
-* 5.是否需要更新畫面內容？更新畫面的方法？
-************************************/
-// query(101);
+  /************************************
+   * 1.考慮觸發行為的事件
+   * 2.建立監聽行為
+   * 3.考慮是否需要代入參數
+   * 4.是否會有回傳值？回傳值的功用及處理？
+   * 5.是否需要更新畫面內容？更新畫面的方法？
+   ************************************/
+  // query(101);
 
-function loadForm(type){
-  $("#studentForm").load("./form/student_form.php",{type})
+  function loadForm(type){
+  // $("#studentForm").load("./form/student_form.php",{type})
+  $(".modal-body").load("./form/student_form.php",{type},()=>{
+    $("#stuModal").modal('show');
 
-}
-
-
-//新增資料的函式
-function create(){
-  let form={
-    "classroom":$("#classroom").val(),
-    "seatnum":$("#seatnum").val(),
-    "name":$("#name").val(),
-    "birthday":$("#birthday").val()
-  }
-  $.post("./api/insert.php",form,(res)=>{
-    if(parseInt(res)===1){
-      alert("新增成功")
-      query(form.classroom)//再查詢呼叫(重整)一次你輸入的班級號碼列表，使用下面的query方法
-    }else{
-      alert("新增失敗")
-    }
   })
+
 }
 
-//查詢資料的函式
-function query(classroom){
-  $("#room").html(`現在顯示的是${classroom}班的學生`)
-  $("#room").data('classroom',classroom)
-  $.get("api/query.php",{classroom},(students)=>{//classroom是database裡的班級
-    
-    students=JSON.parse(students)
-    console.log(students)
-    let tr="";
-    students.forEach((val,idx)=>{
-      tr=tr+`<tr>
+
+  //新增資料的函式
+  function create() {
+    let form = {
+      "classroom": $("#classroom").val(),
+      "seatnum": $("#seatnum").val(),
+      "name": $("#name").val(),
+      "birthday": $("#birthday").val()
+    }
+    $.post("./api/insert.php", form, (res) => {
+      if (parseInt(res) === 1) {
+        alert("新增成功")
+        query(form.classroom) //再查詢呼叫(重整)一次你輸入的班級號碼列表，使用下面的query方法
+      } else {
+        alert("新增失敗")
+      }
+      $(".modal-body").html('');
+      $("#stuModal").modal('hide');
+    })
+  }
+
+  //查詢資料的函式
+  function query(classroom) {
+    $("#room").html(`現在顯示的是${classroom}班的學生`)
+    $("#room").data('classroom', classroom)
+    $.get("api/query.php", {
+      classroom
+    }, (students) => { //classroom是database裡的班級
+
+      students = JSON.parse(students)
+      console.log(students)
+      let tr = "";
+      students.forEach((val, idx) => {
+        tr = tr + `<tr>
                 <td>${val.name}</td>
                 <td>${val.birthday}</td>
                 <td>
@@ -93,61 +130,76 @@ function query(classroom){
                     <button onclick='del(${val.id})'>刪除(${val.id}))</button>
                 </td>
              </tr>`;
+      })
+
+      $("#list").html(tr);
     })
-
-    $("#list").html(tr);
-  })
-}
-
-//取得要編輯的資料
-function edit(id){
-  loadForm('edit');
-
-  $.get("./api/show.php",{id},(student)=>{
-    student=JSON.parse(student)
-    $("#classroom").val(student.classroom)
-    $("#seatnum").val(student.seat_num)
-    $("#name").val(student.name)
-    $("#birthday").val(student.birthday)
-    $("#stuId").val(student.id)
-  })
-}
-
-//編輯資料的函式
-function update(classroom,id){
-  let form={
-    "classroom":$("#classroom").val(),
-    "seatnum":$("#seatnum").val(),
-    "name":$("#name").val(),
-    "birthday":$("#birthday").val(),
-    "stuId":$("#stuId").val()
   }
-  //console.log(form)
-  $.post("./api/update.php",form,()=>{
-    $("#classroom").val(""),
-    $("#seatnum").val(""),
-    $("#name").val(""),
-    $("#birthday").val(""),
-    $("#stuId").val("")
-    query(form.classroom)
+
+  //取得要編輯的資料
+  function edit(id) {
+    loadForm('edit');
+    $(".modal-body").load("./form/student_form.php",{type:'edit'},()=>{
+      $.get("./api/show.php",{id},(student)=>{
+        student=JSON.parse(student)
+        //console.log(student)
+        $("#classroom").val(student.classroom)
+        $("#seatnum").val(student.seat_num)
+        $("#name").val(student.name)
+        $("#birthday").val(student.birthday)
+        $("#stuId").val(student.id)
+
+        $("#stuModal").modal('show')
+    })
   })
 }
 
-//刪除資料的函式
-function del(id){
-  let classroom=$("#room").data('classroom')
-  $.post("./api/delete.php",{id},(res)=>{
-      if(parseInt(res)===1){
-        $("#result").css({background:'lightblue',color:'blue',display:'block'}).text("刪除成功");
-      }else{
-        $("#result").css({background:'pinky',color:'red',display:'block'}).text("刪除失敗");
+  //編輯資料的函式
+  function update(classroom, id) {
+    let form = {
+      "classroom": $("#classroom").val(),
+      "seatnum": $("#seatnum").val(),
+      "name": $("#name").val(),
+      "birthday": $("#birthday").val(),
+      "stuId": $("#stuId").val()
+    }
+    //console.log(form)
+    $.post("./api/update.php", form, () => {
+      $("#classroom").val(""),
+      $("#seatnum").val(""),
+      $("#name").val(""),
+      $("#birthday").val(""),
+      $("#stuId").val("")
+      query(form.classroom)
+      $(".modal-body").html('');
+      $("#stuModal").modal('hide');
+    })
+  }
+
+  //刪除資料的函式
+  function del(id) {
+    let classroom = $("#room").data('classroom')
+    $.post("./api/delete.php", {
+      id
+    }, (res) => {
+      if (parseInt(res) === 1) {
+        $("#result").css({
+          background: 'lightblue',
+          color: 'blue',
+          display: 'block'
+        }).text("刪除成功");
+      } else {
+        $("#result").css({
+          background: 'pinky',
+          color: 'red',
+          display: 'block'
+        }).text("刪除失敗");
       }
 
       query(classroom);
-      setTimeout(()=>{
+      setTimeout(() => {
         $("#result").hide(500);
-      },3000)
-  })
-}
-
+      }, 3000)
+    })
+  }
 </script>
