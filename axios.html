@@ -66,9 +66,10 @@
 //發起一個axios請求
 //建立回呼函式(call back function)來處理回應時的各項行為
 //建立錯誤處理
-axios.get('https://kktix.com/events.json')
+axios.get('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-8DF08DFB-420E-4831-9A5E-BD9598F52448&format=JSON')
 .then((res)=>{
-    eventList(res.data)
+    // eventList(res.data)
+    console.log(res)
 })
 
 </script>
